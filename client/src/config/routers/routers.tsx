@@ -1,12 +1,15 @@
+import { lazy } from "react";
 import { Navigate, RouteObject } from "react-router-dom";
-// import Page404 from "@pages/404/error";
-import Home from "@pages/home/home";
-import Login from "@pages/login/login";
-import Page404 from "@pages/404/error";
+const Login = lazy(() => import("@pages/login/login"));
+const Home = lazy(() => import("@pages/home/home"));
+const Admin = lazy(() => import("@pages/admin/admin"));
+const Page404 = lazy(() => import("@pages/404/error"));
+
 
 const routerDefinitions = [
     { path: 'home', element: <Home/>},
     { path: 'login', element: <Login/>},
+    { path: 'admin', element: <Admin/>},
     { path: 'profile', element: <Page404/>},
     { path: 'register', element: <Page404/>},
 ]
@@ -31,7 +34,6 @@ const routers: RouteObject[] = [
     createLocalizedRoutes(''),
     createLocalizedRoutes('en'),
     createLocalizedRoutes('vi'),
-   
 ]
 
 export default routers;

@@ -1,9 +1,11 @@
+import { Suspense } from "react";
+import { Toaster } from "sonner";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import store, { persistor } from "./stores";
 import AppRouter from "./config/routers";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "sonner";
+import Loader from "@components/loader/loader";
 
 function App() {
   const queryClient = new QueryClient();
@@ -12,7 +14,9 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <QueryClientProvider client={queryClient}>
           <Toaster richColors />
-          <AppRouter />
+          <Suspense fallback={<Loader />}>
+            <AppRouter />
+          </Suspense>
         </QueryClientProvider>
       </PersistGate>
     </Provider>
