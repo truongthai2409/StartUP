@@ -33,6 +33,7 @@
       "@pages/*": ["pages/*"],
       "@stores/*": ["stores/*"],
       "@types/*": ["types/*"],
+      "@locales/*": ["locales/*"],
     }
   },
   "include": ["src"]

@@ -1,4 +1,5 @@
-import { LoginData, LoginResponse } from "../../types/auth";
+// import { LoginData, LoginResponse } from "../../types/auth";
+import { LoginData, LoginResponse } from "types/auth";
 import http from "../api/api_config";
 
 export const loginSevice = async (loginData: LoginData): Promise<LoginResponse> => {

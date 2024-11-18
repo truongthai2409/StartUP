@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import auth_slice from "./slices/auth_slices" ;
-import { VITE_API_BE } from "../config";
+import { VITE_API_BE } from "@config/index";
 
 const persistConfig = {
     key: "root",

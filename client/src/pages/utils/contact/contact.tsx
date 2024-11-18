@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Admin : React.FC = () => {
+const Contact : React.FC = () => {
     return (
         <div>
-            admin
+            <h1>Contact</h1>
         </div>
     );
 };
 
-export default Admin;
+export default Contact;
