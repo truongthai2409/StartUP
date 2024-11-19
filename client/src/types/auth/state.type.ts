@@ -4,5 +4,3 @@ export interface AuthState {
   refreshToken: string | null;
   isAuthenticated: boolean;
 }
-
-// export type { AuthState };

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Customer } from "types/admin/admin.type";
 import {
   Table,
   Button,
@@ -9,16 +11,7 @@ import {
   Popconfirm,
   notification,
 } from "antd";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
-interface Customer {
-  key: string;
-  name: string;
-  email: string;
-  code: string;
-  phone: string;
-  address: string;
-}
 
 const initialCustomers: Customer[] = [
   {
