@@ -57,9 +57,9 @@ const AboutUs: React.FC = () => {
               {/* Team Member */}
               <div className="text-center">
                 <img
-                  src="/team-member-1.jpg"
+                  src="/about/photo1.jpg"
                   alt="Team Member 1"
-                  className="w-32 h-32 mx-auto mb-4 rounded-full shadow-lg"
+                  className="object-cover w-32 h-32 mx-auto mb-4 rounded-full shadow-lg"
                 />
                 <h3 className="text-lg font-semibold text-gray-700">
                   Nguyễn Hoàng Anh
@@ -68,9 +68,9 @@ const AboutUs: React.FC = () => {
               </div>
               <div className="text-center">
                 <img
-                  src="/team-member-2.jpg"
+                  src="/about/photo2.jpg"
                   alt="Team Member 2"
-                  className="w-32 h-32 mx-auto mb-4 rounded-full shadow-lg"
+                  className="object-cover w-32 h-32 mx-auto mb-4 rounded-full shadow-lg"
                 />
                 <h3 className="text-lg font-semibold text-gray-700">
                   Trần Mai Phương
@@ -79,9 +79,9 @@ const AboutUs: React.FC = () => {
               </div>
               <div className="text-center">
                 <img
-                  src="/team-member-3.jpg"
+                  src="/about/photo3.jpg"
                   alt="Team Member 3"
-                  className="w-32 h-32 mx-auto mb-4 rounded-full shadow-lg"
+                  className="object-cover w-32 h-32 mx-auto mb-4 rounded-full shadow-lg"
                 />
                 <h3 className="text-lg font-semibold text-gray-700">
                   Phạm Văn Tuấn

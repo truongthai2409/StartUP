@@ -169,7 +169,7 @@ const Register: React.FC = () => {
                 <p className="text-sm font-light text-pink-500 dark:text-pink-500">
                   Already have an account?{" "}
                   <Link
-                    to="/login"
+                    to="../login"
                     className="font-medium text-pink-500 hover:underline dark:text-pink-500"
                   >
                     Sign In

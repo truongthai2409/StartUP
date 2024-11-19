@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="ml-6">
             <h3 className="mb-4 text-xl font-bold text-pink-500">
               Liên Kết Nhanh
             </h3>
