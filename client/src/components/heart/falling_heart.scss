@@ -1,0 +1,57 @@
+/* styles.css */
+
+/* Keyframes for random heart falling animation */
+@keyframes fallHeart {
+    0% {
+      transform: translateY(-100px) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  /* Heart container */
+  .heart-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Ensure full viewport height */
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 10;
+  }
+  
+  
+  /* Keyframes cho hiệu ứng trái tim rơi với lắc nhẹ */
+  @keyframes randomFall {
+    0% {
+      opacity: 1;
+      transform: translateX(var(--x)) translateY(-100px) rotate(0deg); /* Bắt đầu từ trên màn hình */
+    }
+    50% {
+      transform: translateX(var(--x)) translateY(50vh) rotate(10deg); /* Lắc sang phải một chút khi rơi xuống */
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(var(--x)) translateY(100vh) rotate(-10deg); /* Lắc sang trái khi gần chạm đất */
+    }
+  }
+  
+  .heart {
+    position: absolute;
+    font-size: 2rem;
+    color: red;
+    animation: randomFall var(--duration) ease-in-out infinite;
+    opacity: 0;
+  }
+  
+  
+  
+  
+  
+  
+  
+  

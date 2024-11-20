@@ -1,7 +1,12 @@
+import { useAppSelector } from "@hooks/redux/use_app_dispatch";
+import { RootState } from "@stores/index";
 import React from "react";
 import { Link } from "react-router-dom";
 
+const isLoggedIn = true;
+
 const Header: React.FC = () => {
+  const avatar = useAppSelector((state: RootState) => state.auth.avatar);
   return (
     <header className="fixed top-0 left-0 z-10 w-full bg-white shadow-md">
       <div className="container flex items-center justify-between px-6 py-3 mx-auto">
@@ -89,18 +94,74 @@ const Header: React.FC = () => {
           </div>
 
           {/* Authentication Buttons */}
-          <Link
-            to="../login"
-            className="px-3 py-1 text-sm text-gray-700 transition border border-gray-300 rounded hover:bg-gray-100"
-          >
-            Đăng nhập
-          </Link>
-          <Link
-            to="../register"
-            className="px-3 py-1 text-sm text-white transition bg-pink-500 rounded hover:bg-pink-600"
-          >
-            Đăng ký
-          </Link>
+          {isLoggedIn ? (
+            <div className="relative flex items-center space-x-3 cursor-pointer group">
+              <div className="relative">
+                {/* Avatar + Dropdown Button */}
+                <div className="relative ">
+                  <div className="absolute w-16 -translate-y-1/2 bg-gray-700 h-7 rounded-xl left-1 top-1/2 -z-10"></div>
+                  <img
+                    className="object-cover w-10 h-10 rounded-full"
+                    src={avatar}
+                    alt="User"
+                  />
+                  <button className="absolute mt-2 text-white top-1 -right-5 focus:outline-none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Dropdown Menu */}
+                <div className="hover:transition-all hover:duration-300 absolute right-1 translate-x-[50px] outline-8 hidden w-[200px] bg-white border-white rounded-lg shadow-md bg-brown-300 group-hover:block group-focus-within:block">
+                  <Link
+                    to="../account"
+                    className="block w-full px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-100"
+                  >
+                    Profile
+                  </Link>
+                  <Link
+                    to="../settings"
+                    className="block w-full px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-100"
+                  >
+                    Settings
+                  </Link>
+                  <Link
+                    to="../logout"
+                    className="block w-full px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-100"
+                  >
+                    Logout
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <>
+              <Link
+                to="../login"
+                className="px-3 py-1 text-sm text-gray-700 transition border border-gray-300 rounded hover:bg-gray-100"
+              >
+                Đăng nhập
+              </Link>
+              <Link
+                to="../register"
+                className="px-3 py-1 text-sm text-white transition bg-pink-500 rounded hover:bg-pink-600"
+              >
+                Đăng ký
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile Menu Button */}

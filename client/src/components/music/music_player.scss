@@ -1,0 +1,11 @@
+/* Đảm bảo element chứa có position relative */
+body {
+  position: relative;
+}
+
+/* Đặt biểu tượng loa ở góc dưới bên phải màn hình */
+.absolute {
+  position: absolute;
+  bottom: 1rem; /* Khoảng cách từ đáy */
+  right: 1rem; /* Khoảng cách từ bên phải */
+}

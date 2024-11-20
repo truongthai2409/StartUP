@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { IoMdCloseCircle } from "react-icons/io";
 
 interface FullScreenModalProps {
   isOpen: boolean;
@@ -37,9 +38,9 @@ const FullScreenModal: React.FC<FullScreenModalProps> = ({ isOpen, closeModal, t
         <div className="absolute top-4 right-4">
           <button
             onClick={closeModal}
-            className="p-2 text-2xl text-white bg-pink-500 rounded-full hover:bg-pink-600"
+            className="mr-2 text-3xl text-pink-500"
           >
-            ×
+            <IoMdCloseCircle />
           </button>
         </div>
         <div className="h-full p-8 overflow-y-auto">

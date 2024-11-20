@@ -46,6 +46,9 @@ const Admin: React.FC = () => {
         width={200}
         style={{ background: colorBgContainer }}
       >
+        <div className="pt-6 text-2xl font-bold text-center text-pink-500">
+          <Link to="/">Wedding Bliss</Link>
+        </div>
         <Menu style={{ paddingTop: "2rem"}} theme="light" mode="inline" defaultSelectedKeys={["1"]} items={items} />
       </Sider>
       <Layout>
