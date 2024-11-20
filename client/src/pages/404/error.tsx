@@ -1,8 +1,14 @@
 import React from "react";
 import "./error.scss"
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const Page404: React.FC = () => {
+  const navigate = useNavigate();
+
+const handleBackToHome = () => {
+  navigate('/'); 
+};
   return (
     <div className="page-404">
       <h1>404 Error Page</h1>
@@ -21,12 +27,18 @@ const Page404: React.FC = () => {
         </span>
       </section>
       <div className="link-container">
-        <Link
+        {/* <Link
           to="/"
           className="more-link"
         >
           Navigate to Home
-        </Link>
+        </Link> */}
+        <button
+          onClick={handleBackToHome}
+          className="more-link"
+        >
+          Navigate to Home
+        </button>
       </div>
     </div>
   );

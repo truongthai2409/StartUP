@@ -10,7 +10,7 @@ import {
 } from "../validate";
 import { useRegister } from "@hooks/auth";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import Layout from "@components/layouts";
+import Layout from "@components/layouts/layout";
 
 const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);

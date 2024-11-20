@@ -1,4 +1,4 @@
-import Layout from "@components/layouts";
+import Layout from "@components/layouts/layout";
 import React from "react";
 
 const Privacy: React.FC = () => {

@@ -1,4 +1,4 @@
-import Layout from "@components/layouts";
+import Layout from "@components/layouts/layout";
 import { useAppDispatch, useAppSelector } from "@hooks/redux/use_app_dispatch";
 import { RootState } from "@stores/index";
 import { setAvatar } from "@stores/slices/auth_slices";

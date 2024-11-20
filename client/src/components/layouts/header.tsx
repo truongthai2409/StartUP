@@ -3,6 +3,11 @@ import { RootState } from "@stores/index";
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { FaUserPen } from "react-icons/fa6";
+import { RiVipCrown2Line } from "react-icons/ri";
+import { RiWebhookLine } from "react-icons/ri";
+import { FiLogOut } from "react-icons/fi";
+
 const isLoggedIn = true;
 
 const Header: React.FC = () => {
@@ -97,8 +102,11 @@ const Header: React.FC = () => {
           {isLoggedIn ? (
             <div className="relative flex items-center space-x-3 cursor-pointer group">
               <div className="relative">
+                {/* Wrapper mở rộng vùng hover */}
+                <div className="absolute inset-0 z-30 -m-2 bg-transparent w-[100px] rounded-xl"></div>
+
                 {/* Avatar + Dropdown Button */}
-                <div className="relative ">
+                <div className="relative">
                   <div className="absolute w-16 -translate-y-1/2 bg-gray-700 h-7 rounded-xl left-1 top-1/2 -z-10"></div>
                   <img
                     className="object-cover w-10 h-10 rounded-full"
@@ -124,25 +132,47 @@ const Header: React.FC = () => {
                 </div>
 
                 {/* Dropdown Menu */}
-                <div className="hover:transition-all hover:duration-300 absolute right-1 translate-x-[50px] outline-8 hidden w-[200px] bg-white border-white rounded-lg shadow-md bg-brown-300 group-hover:block group-focus-within:block">
+                <div className="absolute hidden w-64 mt-2 pb-1 -translate-x-[70%] bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block group-focus-within:block">
+                  <li className="flex px-4 py-2 mt-2 text-sm text-gray-700 cursor-default">
+                    <img
+                      className="object-cover mt-1 rounded-full w-11 h-11"
+                      src={avatar}
+                      alt="User"
+                    />
+                    <div className="ml-3">
+                      <h1 className="text-lg font-semibold">John Doe</h1>
+                      <h2 className="text-base">ID: 324789273</h2>
+                      <h2 className="w-40 truncate">john.doe@example.com</h2>
+                      {/* <h2>joh@example.com</h2> */}
+                    </div>
+                  </li>
+                  <li className="list-none border-b"></li>
                   <Link
                     to="../account"
-                    className="block w-full px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-100"
+                    className="flex items-center px-4 py-3 text-gray-700 justify-stretch hover:bg-gray-100 hover:text-pink-500"
                   >
-                    Profile
+                    <FaUserPen  className="mr-3"/>
+                    <span>Cài đặt thông tin cá nhân</span>
                   </Link>
                   <Link
-                    to="../settings"
-                    className="block w-full px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-100"
+                    to="../vip"
+                    className="flex items-center px-4 py-2 text-gray-700 justify-stretch hover:bg-gray-100 hover:text-pink-500"
                   >
-                    Settings
+                    <RiVipCrown2Line className="mr-3"/>Nâng cấp tài khoản VIP
+                  </Link>
+                  <Link
+                    to="../website"
+                    className="flex items-center px-4 py-2 text-gray-700 justify-stretch hover:bg-gray-100 hover:text-pink-500"
+                  >
+                    <RiWebhookLine className="mr-3"/>Website của bạn
                   </Link>
                   <Link
                     to="../logout"
-                    className="block w-full px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-100"
+                    className="flex items-center px-4 py-2 text-gray-700 justify-stretch hover:bg-gray-100 hover:text-pink-500"
                   >
-                    Logout
+                    <FiLogOut className="mr-3"/>Đăng xuất
                   </Link>
+                  
                 </div>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import Layout from "@components/layouts";
+import Layout from "@components/layouts/layout";
 import React, { useState } from "react";
 import WeddingTemplate from "@pages/templates/wedding.template";
 import FullScreenModal from "@components/modal/full_screen";

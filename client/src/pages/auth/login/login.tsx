@@ -7,7 +7,7 @@ import { useLogin } from "@hooks/auth";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import Layout from "@components/layouts";
+import Layout from "@components/layouts/layout";
 
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
