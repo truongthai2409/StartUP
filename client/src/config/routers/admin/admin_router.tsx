@@ -10,6 +10,7 @@ const adminRoutes = {
   path: "admin",
   element: <Admin />,
   children: [
+    { index: true, element: <Dashboard /> },
     { path: "dashboard", element: <Dashboard /> },
     { path: "settings", element: <Settings /> },
     { path: "customers", element: <Customers /> },

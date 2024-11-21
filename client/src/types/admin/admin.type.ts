@@ -6,3 +6,6 @@ export interface Customer {
   phone: string;
   address: string;
 }
+export interface ThemeState {
+  theme: "light" | "dark";
+}
