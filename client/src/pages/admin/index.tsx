@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Menu, MenuProps } from "antd";
+import { ConfigProvider, Layout, Menu, MenuProps } from "antd";
 import { Outlet, Link } from "react-router-dom";
 import { FaUserAstronaut, FaChartBar } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
@@ -39,56 +39,78 @@ const Admin: React.FC = () => {
   const themeMode = useAppSelector((state: RootState) => state.theme.theme);
 
   return (
-    <Layout
-      style={{ minHeight: "100vh" }}
-      className={
-        themeMode === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"
-      }
+    <ConfigProvider
+      theme={{
+        token: {},
+        components: {
+          Layout: {
+            colorBgTrigger: themeMode === "dark" ? "#1a1a1a" : "#ffe4e6",
+            triggerColor: themeMode === "dark" ? "#ffe4e6" : "#1a1a1a",
+          },
+        },
+      }}
     >
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
-        width={200}
-        style={{ background: themeMode === "dark" ? "#2f2f2f" : "#fff" }}
+      <Layout
+        style={{ minHeight: "100vh" }}
+        className={
+          themeMode === "dark"
+            ? "bg-gray-900 text-white"
+            : "bg-white text-black"
+        }
       >
-        <div className="pt-6 text-2xl font-bold text-center text-pink-500">
-          <Link to="/">Wedding Bliss</Link>
-        </div>
-        <Menu
-          style={{ paddingTop: "2rem" }}
-          theme={themeMode === "dark" ? "dark" : "light"} // Chuyển giữa chế độ sáng và tối
-          mode="inline"
-          defaultSelectedKeys={["1"]}
-          items={items}
-        />
-      </Sider>
-      <Layout>
-        <Header
-          style={{
-            background: themeMode === "dark" ? "#1c1c1c" : "#fff",
-            padding: 0,
-            color: themeMode === "dark" ? "#fff" : "#000",
-          }}
+        <Sider
+          collapsible
+          collapsed={collapsed}
+          onCollapse={(value) => setCollapsed(value)}
+          width={200}
+          style={{ background: themeMode === "dark" ? "#2f2f2f" : "#fff" }}
         >
-          <div className="flex justify-between my-4 text-xl mx-7">
-            <h1>Admin Panel</h1>
-            <ThemeToggle />
+          <div className="pt-6 text-2xl font-bold text-center text-pink-500">
+            <Link to="/">
+              {collapsed ? (
+                <i className="fas fa-home" />
+                // <IoIosHome className="justify-center text-3xl" />
+              ) : (
+                "Wedding Bliss"
+              )}
+            </Link>
           </div>
-        </Header>
-        <Content style={{ margin: "16px" }}>
-          <div
+          <Menu
+            style={{ paddingTop: "2rem" }}
+            theme={themeMode === "dark" ? "dark" : "light"}
+            mode="inline"
+            defaultSelectedKeys={["1"]}
+            items={items}
+          />
+        </Sider>
+
+        <Layout>
+          <Header
             style={{
-              padding: 24,
-              background: themeMode === "dark" ? "#333" : "#fff",
-              minHeight: 360,
+              background: themeMode === "dark" ? "#1c1c1c" : "#fff",
+              padding: 0,
+              color: themeMode === "dark" ? "#fff" : "#000",
             }}
           >
-            <Outlet />
-          </div>
-        </Content>
+            <div className="flex justify-between my-4 text-xl font-semibold text-gray-500 mx-7">
+              <h1>Admin Panel</h1>
+              <ThemeToggle />
+            </div>
+          </Header>
+          <Content style={{ margin: "16px" }}>
+            <div
+              style={{
+                padding: 24,
+                background: themeMode === "dark" ? "#333" : "#fff",
+                minHeight: 360,
+              }}
+            >
+              <Outlet />
+            </div>
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </ConfigProvider>
   );
 };
 

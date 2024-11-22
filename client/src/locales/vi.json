@@ -1,4 +1,10 @@
 {
+    "Header": {
+        "about": "Giới Thiệu",
+        "gallery": "Bộ Sưu Tập",
+        "services": "Dịch Vụ",
+        "contact": "Liên Hệ"
+    },
     "ChooseApp": "Chọn nền tảng thương mại điện tử bạn muốn!",
     "SignIn": {
         "titleTL": "Đăng nhập tài khoản của bạn",

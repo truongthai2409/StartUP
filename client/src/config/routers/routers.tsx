@@ -1,16 +1,17 @@
-import { lazy } from "react";
 import { Navigate, RouteObject } from "react-router-dom";
 import publicRoutes from "./public/public_router";
 import authRoutes from "./auth/auth_router";
 import adminRoutes from "./admin/admin_router";
 import Page404 from "@pages/404/error";
+import LanguageSync from "@components/langsync/language_sync";
+import i18next from "i18next";
 
-const Home = lazy(() => import("@pages/home/home"));
-const language = 'vi'; // Lấy từ localStorage hoặc context
 
 const createLocalizedRoutes = (langPrefix: string): RouteObject => ({
   path: langPrefix,
+  element: <LanguageSync />,
   children: [
+    { index: true, element: <Navigate to={`/${i18next.languages}/home`}  replace /> },
     ...publicRoutes,
     ...authRoutes,
     adminRoutes,
@@ -18,23 +19,16 @@ const createLocalizedRoutes = (langPrefix: string): RouteObject => ({
   errorElement: <Page404 />,
 });
 
-const languages = ['vi', 'en', 'kr',''];
+const languages = [":lang", ""];
 const languageRoutes = languages.map((lang) => createLocalizedRoutes(lang));
-
-const routerParents = languages.map((lang) => ({
-  path: lang,
-  element: <Home />,
-  errorElement: <Page404 />,
-}));
 
 const routers: RouteObject[] = [
   {
     path: "/",
-    element: <Navigate to={`/${language}/home`} replace />,
+    element: <Navigate to={`/${i18next.languages}/home`} replace />,
     errorElement: <Page404 />,
   },
-  ...routerParents,
-  ...languageRoutes
+  ...languageRoutes,
 ];
 
 export default routers;

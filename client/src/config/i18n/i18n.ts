@@ -5,16 +5,11 @@ import VIETNAMMESE from '@locales/vi.json'
 import KOREAN from '@locales/kr.json'
 
 export const resource = {
-    en: {
-        main: ENGLISH,
-    },
-    vi: {
-        main: VIETNAMMESE,
-    },
-    kr: {
-        main: KOREAN,
-    },
+    en: ENGLISH,
+    vi: VIETNAMMESE,
+    kr: KOREAN,
 }
+// lay nn tu local khi reload lai trang
 
 i18next.use(initReactI18next).init({
     resources: resource,

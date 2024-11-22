@@ -1,4 +1,10 @@
 {
+    "Header": {
+        "about": "소개",
+        "gallery": "갤러리",
+        "services": "서비스",
+        "contact": "연락처"
+    },
     "ChooseApp": "Choose the e-commerce platform you want!",
     "SignIn": {
         "titleTL": "Sign in to your account",

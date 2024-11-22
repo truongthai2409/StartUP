@@ -1,4 +1,10 @@
 {
+    "Header": {
+        "about": "About",
+        "gallery": "Gallery",
+        "services": "Service",
+        "contact": "Contact"
+    },
     "ChooseApp": "Choose the e-commerce platform you want!",
     "SignIn": {
         "titleTL": "Sign in to your account",

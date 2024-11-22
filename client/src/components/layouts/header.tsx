@@ -1,50 +1,60 @@
 import { useAppSelector } from "@hooks/redux/use_app_dispatch";
 import { RootState } from "@stores/index";
 import React from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import { FaUserPen } from "react-icons/fa6";
 import { RiVipCrown2Line } from "react-icons/ri";
 import { RiWebhookLine } from "react-icons/ri";
 import { FiLogOut } from "react-icons/fi";
+import { useLanguage } from "@hooks/utils/use_language";
+import { useTranslation } from "react-i18next";
 
 const isLoggedIn = true;
 
 const Header: React.FC = () => {
+  const path  = useLanguage();
+  const navigate = useNavigate();
+  const { i18n, t } = useTranslation();
   const avatar = useAppSelector((state: RootState) => state.auth.avatar);
+  const changeLanguage = (lng: string, path: string) => {
+    i18n.changeLanguage(lng);
+    navigate(`/${i18n.language}/${path}`);
+  };
+
   return (
     <header className="fixed top-0 left-0 z-10 w-full bg-white shadow-md">
       <div className="container flex items-center justify-between px-6 py-3 mx-auto">
         {/* Logo */}
         <div className="text-2xl font-bold text-pink-500">
-          <Link to="/">Wedding Bliss</Link>
+          <Link to={`/${i18n.language}/home`}>Wedding Bliss</Link>
         </div>
 
         {/* Navigation Menu */}
         <nav className="absolute hidden space-x-6 transform -translate-x-1/2 left-1/2 md:flex">
           <Link
-            to="../about"
+            to={`/${i18n.language}/about`} 
             className="text-gray-700 transition hover:text-pink-500"
           >
-            Giới Thiệu
+            {t("Header:about")}
           </Link>
           <Link
-            to="../gallery"
+            to={`/${i18n.language}/gallery`}
             className="text-gray-700 transition hover:text-pink-500"
           >
-            Bộ Sưu Tập
+            {t("Header:gallery")}
           </Link>
           <Link
-            to="../services"
+            to={`/${i18n.language}/services`}
             className="text-gray-700 transition hover:text-pink-500"
           >
-            Dịch Vụ
+            {t("Header:services")}
           </Link>
           <Link
-            to="../contact"
+            // to="../contact"
+            to={`/${i18n.language}/contact`}
             className="text-gray-700 transition hover:text-pink-500"
           >
-            Liên Hệ
+            {t("Header:contact")}
           </Link>
         </nav>
 
@@ -62,9 +72,9 @@ const Header: React.FC = () => {
 
             {/* Dropdown Menu */}
             <div className="absolute right-0 invisible mt-2 transition-all duration-300 bg-white border border-gray-200 rounded-lg shadow-md opacity-0 w-36 group-hover:visible group-hover:opacity-100 hover:visible hover:opacity-100 focus-within:visible focus-within:opacity-100">
-              <Link
-                to="/en/home"
-                className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              <button
+                onClick={() => changeLanguage("en", path)}
+                className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
                 <img
                   src="/icons8-english-48.png"
@@ -72,10 +82,10 @@ const Header: React.FC = () => {
                   className="w-4 h-4 mr-2"
                 />
                 English
-              </Link>
-              <Link
-                to="/vi/home"
-                className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              </button>
+              <button
+                onClick={() => changeLanguage("vi", path)}
+                className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
                 <img
                   src="/icons8-vietnam-48.png"
@@ -83,10 +93,10 @@ const Header: React.FC = () => {
                   className="w-4 h-4 mr-2"
                 />
                 Tiếng Việt
-              </Link>
-              <Link
-                to="/kr/home"
-                className="flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              </button>
+              <button
+                onClick={() => changeLanguage("kr", path)}
+                className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
                 <img
                   src="/icons8-south-korea-48.png"
@@ -94,7 +104,7 @@ const Header: React.FC = () => {
                   className="w-4 h-4 mr-2"
                 />
                 한국어
-              </Link>
+              </button>
             </div>
           </div>
 
